@@ -20,7 +20,7 @@ class RegisterView(CreateView, SuccessMessageMixin):
     # model = User
     form_class = UserRegistrationForm
     success_message = "Your profile was created successfully"
-    success_url = reverse_lazy("file:home")
+    success_url = reverse_lazy("user:login")
 
     def form_valid(self, form):
         user = form.save(commit=False)

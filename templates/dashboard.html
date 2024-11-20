@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Folder</title>
+</head>
+<body>
+    <h1>{{ root_folders.name }} Folder</h1>
+
+    <!-- Breadcrumb Navigation -->
+    <nav>
+        <span>{{ root_folders.name }}</span>
+    </nav>
+
+    <!-- Folders -->
+    <h2>Folders</h2>
+    <ul>
+        {% for folder in folders %}
+            <li>
+                <a href="#">{{ folder.name }}</a>
+            </li>
+        {% empty %}
+            <li>No folders in root</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Files -->
+    <h2>Files</h2>
+    <ul>
+        {% for file in files %}
+            <li>
+                {{ file.name }} ({{ file.size }} bytes)
+                <a href="{{ file.file.url }}" download>Download</a>
+            </li>
+        {% empty %}
+            <li>No files in root</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

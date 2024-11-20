@@ -3,6 +3,6 @@ from . import views
 
 app_name = 'file'
 urlpatterns = [
-    path('', views.home, name='home')
+    path('', views.dashboard, name='home')
 
 ]
