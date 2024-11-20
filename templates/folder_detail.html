@@ -6,17 +6,17 @@
     <title>Root Folder</title>
 </head>
 <body>
-    <h1>{{ root_folders.name }} Folder</h1>
+    <h1>{{ folder.name }} Folder</h1>
 
     <!-- Breadcrumb Navigation -->
     <nav>
-        <span>{{ root_folders.name }}</span>
+        <span>{{ folder.name }}</span>
     </nav>
 
     <!-- Folders -->
     <h2>Folders</h2>
     <ul>
-        {% for folder in folders %}
+        {% for folder in sub_folders %}
             <li>
                 <a href="{% url 'file:folder_detail' folder.id %}">{{ folder.name }}</a>
             </li>

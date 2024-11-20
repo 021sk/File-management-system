@@ -1,5 +1,7 @@
 from django.core.exceptions import ValidationError
 
+from django.core.validators import FileExtensionValidator
+
 
 def validate_file_type(file):
     valid_types = ['image/jpeg', 'image/png', 'video/mp4']

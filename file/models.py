@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
 from .validators import validate_file_type, validate_file_size
+from django.core.validators import FileExtensionValidator
 
 
 class Folder(models.Model):
@@ -22,7 +23,8 @@ class File(models.Model):
     name = models.CharField(max_length=255)
     folder = models.ForeignKey(Folder, null=True, blank=True, on_delete=models.CASCADE, related_name='files')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    file = models.FileField(upload_to='uploads/', validators=[validate_file_type, validate_file_size])
+    file = models.FileField(upload_to='uploads/',
+                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'mp4'])])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     size = models.PositiveIntegerField()  # In bytes

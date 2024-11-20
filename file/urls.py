@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'file'
 urlpatterns = [
-    path('', views.dashboard, name='home')
+    path('', views.DashboardView.as_view(), name='home'),
+    path('/folder/<int:folder_id>/', views.FolderDetailView.as_view(), name='folder_detail'),
 
 ]
